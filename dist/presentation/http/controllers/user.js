@@ -148,12 +148,14 @@ const LoginUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function
             res.cookie(commonTypes_2.CookieTypes.UserRefreshToken, refreshToken, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'none',
+                sameSite: 'strict',
                 domain: ".profinders.online",
                 maxAge: 7 * 24 * 60 * 60 * 1000
             });
             res.cookie(commonTypes_2.CookieTypes.UserAccessToken, accessToken, {
-                sameSite: 'none',
+                httpOnly: false,
+                secure: true,
+                sameSite: 'strict',
                 domain: ".profinders.online",
                 maxAge: 15 * 60 * 1000
             });
