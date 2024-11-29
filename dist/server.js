@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 //   "https://eventopia.shop", 'http://localhost:3000', '*'
 // ];
 const allowedOrigins = [
+    "https://www.profinders.online",
     "https://api.profinders.online",
     "https://profinders.vercel.app",
     "http://profinders.online",
