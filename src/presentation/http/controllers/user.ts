@@ -149,12 +149,12 @@ export const LoginUser = async (req:Request,res:Response,next:NextFunction)=>{
             res.cookie(CookieTypes.UserRefreshToken,refreshToken,{
                 httpOnly:true,
                 secure :true,
-                sameSite:'strict',
+                sameSite:'none',
                 domain: ".profinders.online",
                 maxAge: 7 * 24 * 60 * 60 * 1000
             })
             res.cookie(CookieTypes.UserAccessToken,accessToken,{
-                sameSite:'strict',
+                sameSite:'none',
                 domain: ".profinders.online",
                 maxAge: 15 * 60 * 1000
             })
