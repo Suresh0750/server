@@ -118,7 +118,8 @@ const userSignupController = (req, res, next) => __awaiter(void 0, void 0, void 
             maxAge: 15 * 60 * 1000,
             httpOnly: true,
             secure: true,
-            sameSite: 'strict'
+            sameSite: 'strict',
+            domain: ".profinders.online",
         });
         res.status(commonTypes_1.StatusCode.Success).json({ user, success: true });
     }

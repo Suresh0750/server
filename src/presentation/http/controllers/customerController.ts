@@ -164,10 +164,15 @@ export const CustomerOtpController = async(req:Request,res:Response,next:NextFun
                     httpOnly:true,
                     secure :true,
                     sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 7 * 24 * 60 * 60 * 1000
                 })
 
                 res.cookie(CookieTypes.UserAccessToken,accessToken,{
+                    httpOnly: false,
+                    secure :true,   
+                    sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 15 * 60 * 1000
                 })   
                 const customerData = {
@@ -190,9 +195,14 @@ export const CustomerOtpController = async(req:Request,res:Response,next:NextFun
                     httpOnly:true,
                     secure :true,
                     sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 7 * 24 * 60 * 60 * 1000
                 })
                 res.cookie(CookieTypes.WorkerAccessToken,accessToken,{
+                    httpOnly: false,
+                    secure :true,   
+                    sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 15 * 60 * 1000
                 })
 
@@ -262,9 +272,14 @@ export const WorkerGoogleLoginWithRegistrastion = async (req:Request,res:Respons
             httpOnly:true,
             secure :true,
             sameSite:'strict',
+            domain: ".profinders.online",
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         res.cookie(CookieTypes.WorkerAccessToken,accessToken,{
+            httpOnly: false,
+            secure :true,
+            sameSite:'strict',
+            domain: ".profinders.online",
             maxAge: 15 * 60 * 1000
         })
     }
@@ -300,10 +315,15 @@ export const GoogleLogin = async (req:Request,res:Response,next:NextFunction)=>{
                     httpOnly:true,
                     secure :true,
                     sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 7 * 24 * 60 * 60 * 1000
                 })
                 res.cookie(CookieTypes.UserAccessToken,accessToken,{
                     // maxAge: 15 * 60 * 1000
+                    httpOnly: false,
+                    secure :true,
+                    sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 15 * 60 * 1000
                 })
                 const customerData  = {
@@ -332,10 +352,14 @@ export const GoogleLogin = async (req:Request,res:Response,next:NextFunction)=>{
                     httpOnly:true,
                     secure :true,
                     sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 7 * 24 * 60 * 60 * 1000
                 })
                 res.cookie(CookieTypes.WorkerAccessToken,accessToken,{
-                    // maxAge: 15 * 60 * 1000
+                    httpOnly: false,
+                    secure :true,
+                    sameSite:'strict',
+                    domain: ".profinders.online",
                     maxAge: 15 * 60 * 1000
                 })
                 const customerData  = {

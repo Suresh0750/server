@@ -119,7 +119,8 @@ export const userSignupController = async (req:Request,res:Response,next:NextFun
             maxAge:15*60*1000,  
             httpOnly: true,         
             secure :true,
-            sameSite: 'strict'
+            sameSite: 'strict',
+            domain: ".profinders.online",
         })
         res.status(StatusCode.Success).json({user,success:true})
     } catch (err) {

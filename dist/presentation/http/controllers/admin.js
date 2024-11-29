@@ -286,9 +286,14 @@ const AdminVerify = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
                 httpOnly: true,
                 secure: true,
                 sameSite: 'strict',
+                domain: ".profinders.online",
                 maxAge: 7 * 24 * 60 * 60 * 1000
             });
             res.cookie(commonTypes_2.CookieTypes.AdminAccessToken, accessToken, {
+                httpOnly: false,
+                secure: true,
+                sameSite: 'strict',
+                domain: ".profinders.online",
                 maxAge: 15 * 60 * 1000
             });
             return res.status(commonTypes_1.StatusCode.Success).json({ success: true, message: 'login verify successful' });

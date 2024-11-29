@@ -229,7 +229,8 @@ const ProfessionalInfoControll = (req, res, next) => __awaiter(void 0, void 0, v
             maxAge: 15 * 60 * 1000,
             httpOnly: true,
             secure: true,
-            sameSite: 'strict'
+            sameSite: 'strict',
+            domain: ".profinders.online",
         });
         res.status(commonTypes_1.StatusCode.Success).json({ success: true, message: 'Worker Details has been register', worker: workerId });
     }
@@ -288,9 +289,14 @@ const LoginWorkerController = (req, res, next) => __awaiter(void 0, void 0, void
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
+            domain: ".profinders.online",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
         res.cookie(commonTypes_1.CookieTypes.WorkerAccessToken, accessToken, {
+            httpOnly: false,
+            secure: true,
+            sameSite: 'strict',
+            domain: ".profinders.online",
             maxAge: 15 * 60 * 1000
         });
         const customerData = {

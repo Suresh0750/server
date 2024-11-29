@@ -299,9 +299,14 @@ export const AdminVerify = async (req:Request,res:Response,next:NextFunction)=>{
                 httpOnly:true,
                 secure :true,
                 sameSite:'strict',
+                domain: ".profinders.online",
                 maxAge: 7 * 24 * 60 * 60 * 1000
             })    
             res.cookie(CookieTypes.AdminAccessToken,accessToken,{
+                httpOnly: false,
+                secure :true,
+                sameSite:'strict',
+                domain: ".profinders.online",
                 maxAge: 15 * 60 * 1000
             })    
          return  res.status(StatusCode.Success).json({success:true,message:'login verify successful'})

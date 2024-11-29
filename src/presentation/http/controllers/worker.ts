@@ -231,7 +231,8 @@ export const ProfessionalInfoControll = async (req:Request,res:Response,next:Nex
             maxAge:15*60*1000,  
             httpOnly: true,         
             secure :true,
-            sameSite: 'strict'
+            sameSite: 'strict',
+            domain: ".profinders.online",
         })
         res.status(StatusCode.Success).json({success:true,message:'Worker Details has been register',worker : workerId})
     } catch (error) {
@@ -287,9 +288,14 @@ export const LoginWorkerController = async (req:Request,res:Response,next:NextFu
             httpOnly:true,
             secure :true,
             sameSite:'strict',
+            domain: ".profinders.online",
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         res.cookie(CookieTypes.WorkerAccessToken,accessToken,{
+            httpOnly: false,
+            secure :true,   
+            sameSite:'strict',
+            domain: ".profinders.online",
             maxAge: 15 * 60 * 1000
         })
         const customerData  = {
