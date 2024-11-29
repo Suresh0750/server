@@ -56,6 +56,7 @@ app.use((req, res, next) => {
 // ];
 
 const allowedOrigins = [
+  "https://www.profinders.online",
   "https://api.profinders.online",
   "https://profinders.vercel.app",
   "http://profinders.online", 
