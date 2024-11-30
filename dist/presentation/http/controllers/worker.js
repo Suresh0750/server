@@ -229,7 +229,7 @@ const ProfessionalInfoControll = (req, res, next) => __awaiter(void 0, void 0, v
             maxAge: 15 * 60 * 1000,
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             domain: ".profinders.online",
         });
         res.status(commonTypes_1.StatusCode.Success).json({ success: true, message: 'Worker Details has been register', worker: workerId });

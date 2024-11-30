@@ -173,7 +173,7 @@ function clearToken(role, res) {
                 res.clearCookie(commonTypes_2.CookieTypes.UserRefreshToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     path: '/',
                 });
                 res.clearCookie(commonTypes_2.CookieTypes.UserAccessToken);
@@ -182,7 +182,7 @@ function clearToken(role, res) {
                 res.clearCookie(commonTypes_2.CookieTypes.WorkerRefreshToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     path: '/',
                 });
                 res.clearCookie(commonTypes_2.CookieTypes.WorkerAccessToken);

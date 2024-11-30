@@ -231,7 +231,7 @@ export const ProfessionalInfoControll = async (req:Request,res:Response,next:Nex
             maxAge:15*60*1000,  
             httpOnly: true,         
             secure :true,
-            sameSite: 'strict',
+            sameSite: 'none',
             domain: ".profinders.online",
         })
         res.status(StatusCode.Success).json({success:true,message:'Worker Details has been register',worker : workerId})
