@@ -43,19 +43,28 @@ export const verifyTokenAndRole = (role: string[]) => {
 
  
             if (selectRefreshToken(url, Role.Admin)) {
+                console.log('Admin access token')
                 accessToken = req.cookies[CookieTypes.AdminAccessToken];
+                console.log(accessToken)
             } else if (selectRefreshToken(url, Role.Worker)) {
+                console.log('Admin access token')
                 accessToken = req.cookies[CookieTypes.WorkerAccessToken];
+                console.log(accessToken)
             } else if (selectRefreshToken(url, Role.User)) {
+                console.log('Admin access token')
                 accessToken = req.cookies[CookieTypes.UserAccessToken];
-             
+                console.log(accessToken)
             } else {
+                console.log('worker')
                 accessToken = req.cookies[CookieTypes.UserAccessToken] || req.cookies[CookieTypes.WorkerAccessToken];
+                console.log(accessToken)
             }
 
             if (accessToken) {
              
                 payload = verifyToken(accessToken, String(process.env.ACCESS_TOKEN_SECRET));
+                console.log('access payload')
+                console.log(payload)
                 
             }
 
@@ -67,7 +76,7 @@ export const verifyTokenAndRole = (role: string[]) => {
             }
 
             if (!payload) {
-                // console.log('no access token and no refreshtoken');
+                console.log('no access token and no refreshtoken');
                 return res.status(StatusCode.Unauthorized).json({ success: false, message: 'Unauthorized, please log in',middleware:true });
             }
 
@@ -76,6 +85,7 @@ export const verifyTokenAndRole = (role: string[]) => {
                 const isBlock = await checkBlocked(payload?.role, payload?.customerId);
                 
                 if (isBlock) {
+                    console.log('user is block')
                     await clearToken(payload.role,res)
                     return res
                         .status(StatusCode.Forbidden)
@@ -88,8 +98,8 @@ export const verifyTokenAndRole = (role: string[]) => {
             req.session.save();
 
             if (!role.includes(payload.role)) {
-                // console.log('role checking');
-                // console.log(role, payload.role);
+                console.log('role checking');
+                console.log(role, payload.role);
                 return res.status(StatusCode.Forbidden).json({ success: false, message: 'Access denied',middleware:true });
             }
 

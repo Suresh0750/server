@@ -58,31 +58,42 @@ const verifyTokenAndRole = (role) => {
             let payload = null;
             let accessToken;
             if (selectRefreshToken(url, commonTypes_1.Role.Admin)) {
+                console.log('Admin access token');
                 accessToken = req.cookies[commonTypes_2.CookieTypes.AdminAccessToken];
+                console.log(accessToken);
             }
             else if (selectRefreshToken(url, commonTypes_1.Role.Worker)) {
+                console.log('Admin access token');
                 accessToken = req.cookies[commonTypes_2.CookieTypes.WorkerAccessToken];
+                console.log(accessToken);
             }
             else if (selectRefreshToken(url, commonTypes_1.Role.User)) {
+                console.log('Admin access token');
                 accessToken = req.cookies[commonTypes_2.CookieTypes.UserAccessToken];
+                console.log(accessToken);
             }
             else {
+                console.log('worker');
                 accessToken = req.cookies[commonTypes_2.CookieTypes.UserAccessToken] || req.cookies[commonTypes_2.CookieTypes.WorkerAccessToken];
+                console.log(accessToken);
             }
             if (accessToken) {
                 payload = verifyToken(accessToken, String(process.env.ACCESS_TOKEN_SECRET));
+                console.log('access payload');
+                console.log(payload);
             }
             if (!payload || !accessToken) {
                 // console.log('accessToken vanished', accessToken);
                 payload = yield (0, exports.verifyRefreshToken)(req, res); // Await the async function here
             }
             if (!payload) {
-                // console.log('no access token and no refreshtoken');
+                console.log('no access token and no refreshtoken');
                 return res.status(commonTypes_1.StatusCode.Unauthorized).json({ success: false, message: 'Unauthorized, please log in', middleware: true });
             }
             if (payload && ((payload === null || payload === void 0 ? void 0 : payload.role) == commonTypes_1.Role.User || (payload === null || payload === void 0 ? void 0 : payload.role) == commonTypes_1.Role.Worker)) {
                 const isBlock = yield (0, checkBlocked_1.checkBlocked)(payload === null || payload === void 0 ? void 0 : payload.role, payload === null || payload === void 0 ? void 0 : payload.customerId);
                 if (isBlock) {
+                    console.log('user is block');
                     yield clearToken(payload.role, res);
                     return res
                         .status(commonTypes_1.StatusCode.Forbidden)
@@ -92,8 +103,8 @@ const verifyTokenAndRole = (role) => {
             req.session.customerId = payload.customerId;
             req.session.save();
             if (!role.includes(payload.role)) {
-                // console.log('role checking');
-                // console.log(role, payload.role);
+                console.log('role checking');
+                console.log(role, payload.role);
                 return res.status(commonTypes_1.StatusCode.Forbidden).json({ success: false, message: 'Access denied', middleware: true });
             }
             next(); // Proceed to the next middleware/handler
