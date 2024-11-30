@@ -89,9 +89,7 @@ export const verifyTokenAndRole = (role: string[]) => {
                 if (isBlock) {
                     console.log('user is block')
                     await clearToken(payload.role,res)
-                    return res
-                        .status(StatusCode.Forbidden)
-                        .json({ success: false, message: 'account is blocked', isBlock: true,middleware:true  });
+                    return res.status(StatusCode.Forbidden).json({ success: false, message: 'account is blocked', isBlock: true,middleware:true  });
                 }
             }
             
@@ -186,7 +184,11 @@ function clearToken(role: string, res: Response) {
                     domain: ".profinders.online",
                     path: '/',
                 });
-                res.clearCookie(CookieTypes.UserAccessToken);
+                res.clearCookie(CookieTypes.UserAccessToken,{
+                    secure: true,
+                    sameSite: 'strict',
+                    domain: ".profinders.online"
+                });
                 break; 
             case Role.Worker:
                 res.clearCookie(CookieTypes.WorkerRefreshToken, {
@@ -196,7 +198,11 @@ function clearToken(role: string, res: Response) {
                     domain: ".profinders.online",
                     path: '/',
                 });
-                res.clearCookie(CookieTypes.WorkerAccessToken);
+                res.clearCookie(CookieTypes.WorkerAccessToken,{
+                    secure: true,
+                    sameSite: 'strict',
+                    domain: ".profinders.online"
+                });
                 break; 
             default:
                 console.log('Role not handled:', role);
