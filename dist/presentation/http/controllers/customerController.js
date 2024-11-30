@@ -284,7 +284,7 @@ const GoogleLogin = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         if (((_a = req === null || req === void 0 ? void 0 : req.body) === null || _a === void 0 ? void 0 : _a.role) == commonTypes_1.Role.User) {
             const userData = yield (0, customerVerification_1.GoogleLoginUseCases)(req.body);
             if (userData === null || userData === void 0 ? void 0 : userData._id) {
-                if (userData === null || userData === void 0 ? void 0 : userData.isBlock) {
+                if (userData === null || userData === void 0 ? void 0 : userData.isBlocked) {
                     res.status(commonTypes_1.StatusCode.Unauthorized);
                     throw new Error('User is blocked');
                 }
@@ -322,6 +322,10 @@ const GoogleLogin = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
             const customerDetails = yield (0, customerVerification_1.GoogleLoginWorkerRegister)(req.body);
             if (!customerDetails)
                 return res.status(commonTypes_1.StatusCode.NotFound).json({ success: false, message: 'server error' });
+            if (customerDetails === null || customerDetails === void 0 ? void 0 : customerDetails.isBlocked) {
+                res.status(commonTypes_1.StatusCode.Unauthorized);
+                throw new Error('Worker is blocked');
+            }
             if (customerDetails === null || customerDetails === void 0 ? void 0 : customerDetails._id) {
                 const { refreshToken, accessToken } = (0, jwt_1.JwtService)((customerDetails === null || customerDetails === void 0 ? void 0 : customerDetails._id).toString(), customerDetails.firstName, customerDetails.emailAddress, commonTypes_1.Role.Worker);
                 // * JWT referesh token setUp

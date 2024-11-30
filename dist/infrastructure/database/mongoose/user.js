@@ -90,7 +90,7 @@ const getUserRepository = () => ({
     }),
     Profile: (_id) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            return yield user_1.UserModel.findById({ _id }, { isVerified: 0, createdAt: 0, updatedAt: 0, __v: 0, isBlock: 0 });
+            return yield user_1.UserModel.findById({ _id }, { isVerified: 0, createdAt: 0, updatedAt: 0, __v: 0, isBlocked: 0 });
         }
         catch (error) {
             console.log(`Error from infrastructure->mongoseUser->setNewPassWord\n`, error);

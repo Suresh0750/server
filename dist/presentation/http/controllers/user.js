@@ -139,7 +139,7 @@ const LoginUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function
             res.status(commonTypes_1.StatusCode.Unauthorized);
             throw new Error('check email and password');
         }
-        else if (loginUsecase && (loginUsecase === null || loginUsecase === void 0 ? void 0 : loginUsecase.isBlock)) {
+        else if (loginUsecase && (loginUsecase === null || loginUsecase === void 0 ? void 0 : loginUsecase.isBlocked)) {
             res.status(commonTypes_1.StatusCode.Unauthorized);
             throw new Error('User is blocked');
         }

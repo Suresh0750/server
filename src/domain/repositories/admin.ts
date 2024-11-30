@@ -16,7 +16,7 @@ export interface IAdminMongoose{
     isWorkerApproval(_id:string) : Promise<void>;
     getAllWorkerList(): Promise<WorkerInformation[] | undefined> // * all worker list
     getAllUserList(): Promise<User[]>     // * Admin in User side
-    isBlockUser(_id:string,isBlock:boolean) : Promise<void>
+    isBlockUser(_id:string,isBlocked:boolean) : Promise<void>
     totalRevenue() : Promise<number[]>
     totalReview() : Promise<number>
     totalWorkers() : Promise<number>

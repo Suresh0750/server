@@ -80,7 +80,7 @@ export const getUserRepository = () : IgetUserRepository =>({
     },
     Profile : async(_id:string)=>{
         try{
-            return await UserModel.findById({_id},{isVerified:0,createdAt:0,updatedAt:0,__v:0,isBlock:0})
+            return await UserModel.findById({_id},{isVerified:0,createdAt:0,updatedAt:0,__v:0,isBlocked:0})
         }catch(error){
             console.log(`Error from infrastructure->mongoseUser->setNewPassWord\n`,error)
             throw error

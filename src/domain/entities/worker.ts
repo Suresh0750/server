@@ -38,6 +38,7 @@ export interface ProfessionInformation {
     experience?: string;
     availability?: string;
     rate?: number;
+    isBlocked?: boolean;
 }
 
 // * Worker Information combining Personal and Profession Info

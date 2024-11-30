@@ -137,7 +137,7 @@ export const LoginUser = async (req:Request,res:Response,next:NextFunction)=>{
         if(!loginUsecase){
             res.status(StatusCode.Unauthorized)
             throw new Error('check email and password')
-        }else if(loginUsecase && loginUsecase?.isBlock){
+        }else if(loginUsecase && loginUsecase?.isBlocked){
            
             res.status(StatusCode.Unauthorized)
             throw new Error('User is blocked')

@@ -305,7 +305,7 @@ export const GoogleLogin = async (req:Request,res:Response,next:NextFunction)=>{
             const userData :any = await GoogleLoginUseCases(req.body)
 
             if(userData?._id){
-                if(userData?.isBlock){
+                if(userData?.isBlocked){
                     res.status(StatusCode.Unauthorized)
                     throw new Error('User is blocked')
                 }
@@ -341,9 +341,13 @@ export const GoogleLogin = async (req:Request,res:Response,next:NextFunction)=>{
             const imageUrl = await uploadImage(file)
             req.body.Identity = imageUrl
             req.body.Password = await hashPassword(req.body.Password)
-            const customerDetails = await GoogleLoginWorkerRegister(req.body)
+            const customerDetails : any= await GoogleLoginWorkerRegister(req.body)
          
             if(!customerDetails)  return res.status(StatusCode.NotFound).json({success:false,message:'server error'})
+                if(customerDetails?.isBlocked){
+                    res.status(StatusCode.Unauthorized)
+                    throw new Error('Worker is blocked')
+                }
 
             if(customerDetails?._id){
                 const  {refreshToken,accessToken} = JwtService((customerDetails?._id).toString(),customerDetails.firstName,customerDetails.emailAddress, Role.Worker)  
