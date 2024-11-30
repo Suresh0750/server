@@ -323,7 +323,11 @@ export const AdminVerify = async (req:Request,res:Response,next:NextFunction)=>{
 export const adminLogoutController = async(req:Request,res:Response,next:NextFunction)=>{
     try {
      
-        res.clearCookie(CookieTypes.AdminAccessToken); // * Clear the accessToken
+        res.clearCookie(CookieTypes.AdminAccessToken,{
+            secure: true, 
+            sameSite: 'strict',
+            domain: ".profinders.online",
+        }); // * Clear the accessToken
          
         res.clearCookie(CookieTypes.AdminRefreshToken, {  // * Clear the refresh token cookie
             httpOnly: true,

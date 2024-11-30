@@ -362,13 +362,6 @@ const GoogleLogin = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 exports.GoogleLogin = GoogleLogin;
 const CustomerLogoutController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.clearCookie(commonTypes_1.CookieTypes.WorkerRefreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            domain: ".profinders.online",
-            path: '/'
-        });
         res.clearCookie(commonTypes_1.CookieTypes.UserRefreshToken, {
             httpOnly: true,
             secure: true,
@@ -376,8 +369,25 @@ const CustomerLogoutController = (req, res, next) => __awaiter(void 0, void 0, v
             domain: ".profinders.online",
             path: '/'
         });
-        res.clearCookie(commonTypes_1.CookieTypes.WorkerAccessToken);
-        res.clearCookie(commonTypes_1.CookieTypes.UserAccessToken);
+        res.clearCookie(commonTypes_1.CookieTypes.UserAccessToken, {
+            domain: ".profinders.online",
+            path: "/",
+            sameSite: "strict",
+            secure: true
+        });
+        res.clearCookie(commonTypes_1.CookieTypes.WorkerRefreshToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            domain: ".profinders.online",
+            path: '/'
+        });
+        res.clearCookie(commonTypes_1.CookieTypes.WorkerAccessToken, {
+            domain: ".profinders.online",
+            path: "/",
+            sameSite: "strict",
+            secure: true
+        });
         return res.status(commonTypes_1.StatusCode.Success).json({ success: true, message: 'Logged out successfully' });
     }
     catch (error) {

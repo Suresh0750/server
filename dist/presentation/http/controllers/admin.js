@@ -308,7 +308,11 @@ const AdminVerify = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 exports.AdminVerify = AdminVerify;
 const adminLogoutController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.clearCookie(commonTypes_2.CookieTypes.AdminAccessToken); // * Clear the accessToken
+        res.clearCookie(commonTypes_2.CookieTypes.AdminAccessToken, {
+            secure: true,
+            sameSite: 'strict',
+            domain: ".profinders.online",
+        }); // * Clear the accessToken
         res.clearCookie(commonTypes_2.CookieTypes.AdminRefreshToken, {
             httpOnly: true,
             secure: true,

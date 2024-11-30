@@ -13,6 +13,7 @@ import { hashPassword } from "../../../shared/utils/encrptionUtils"
 import { getCategoryNameUtils, getNearByWorkerListUtils, getVerifiedWorkerUtils,userRequestUsecases,ReviewUsecases,getReviewUsecases,paymentUsecases} from "../../../app/useCases/utils/customerUtils"
 import { payment,IsActivityUsecases } from "../../../app/services/payU"
 import { FindNearByWorkers } from "../../../infrastructure/service/workerLocationFilter"
+import {verifyRefreshToken} from '../../../infrastructure/service/jwt'
 
 
 // * Review in worker
@@ -388,13 +389,6 @@ export const GoogleLogin = async (req:Request,res:Response,next:NextFunction)=>{
 export const CustomerLogoutController = async (req:Request,res:Response,next:NextFunction)=>{
     try {
 
-        res.clearCookie(CookieTypes.WorkerRefreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            domain: ".profinders.online",
-            path : '/'
-        });
         res.clearCookie(CookieTypes.UserRefreshToken, {
             httpOnly: true,
             secure: true,
@@ -402,8 +396,27 @@ export const CustomerLogoutController = async (req:Request,res:Response,next:Nex
             domain: ".profinders.online",
             path : '/'
         });
-        res.clearCookie(CookieTypes.WorkerAccessToken);
-        res.clearCookie(CookieTypes.UserAccessToken);
+        res.clearCookie(CookieTypes.UserAccessToken,{
+            domain: ".profinders.online",
+            path: "/", 
+            sameSite: "strict",
+            secure: true 
+        });
+
+        res.clearCookie(CookieTypes.WorkerRefreshToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            domain: ".profinders.online",
+            path : '/'
+        });
+      res.clearCookie(CookieTypes.WorkerAccessToken, {
+                domain: ".profinders.online",
+                path: "/", 
+                sameSite: "strict",
+                secure: true 
+            });
+        
       
         return res.status(StatusCode.Success).json({success:true, message: 'Logged out successfully' });
     } catch (error) {
