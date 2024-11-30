@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FindNearByWorkers = void 0;
 // * Find nearby workers using the Haversine formula
 // const FindNearByWorkers = (coords: CoordsTypes, workerData: workerDetailsWithlatlon[]) => {
-const FindNearByWorkers = (coords, workerData) => {
+const FindNearByWorkers = (coords, workerData, isListCategory) => {
     // * Haversine distance calculation
     function haversineDistance(lat1, lon1, lat2, lon2) {
         const toRadians = (degree) => (degree * Math.PI) / 180;
@@ -29,6 +29,10 @@ const FindNearByWorkers = (coords, workerData) => {
         return distance <= maxDistance; // Only include workers within 25km
     });
     // console.log('Nearby Workers:', nearbyWorkers); 
+    console.log('isListCategory');
+    console.log(isListCategory);
+    console.log('nearbyWorkers');
+    console.log(nearbyWorkers);
     return nearbyWorkers;
 };
 exports.FindNearByWorkers = FindNearByWorkers;

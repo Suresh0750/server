@@ -118,6 +118,14 @@ export const CustomerQueryRepository = ():ICustomerQueryRepository=>({
             // console.log(`Error from infrastructure->mongoseUser->paymentDetails\n`,error)
             throw error
         }
+    },
+    isBlockCategory : async()=>{
+        try {
+            return await CategoryModel.distinct("categoryName", { isListed: false })
+
+        } catch (error) {
+            throw error
+        }
     }
     
 })

@@ -131,6 +131,14 @@ const CustomerQueryRepository = () => ({
             // console.log(`Error from infrastructure->mongoseUser->paymentDetails\n`,error)
             throw error;
         }
+    }),
+    isBlockCategory: () => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            return yield category_1.CategoryModel.distinct("categoryName", { isListed: false });
+        }
+        catch (error) {
+            throw error;
+        }
     })
 });
 exports.CustomerQueryRepository = CustomerQueryRepository;

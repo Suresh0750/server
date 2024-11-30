@@ -119,7 +119,9 @@ export const getVerifiedWorkerUtils = async(lat:string,lon:string)=>{
         // console.log('all worker')
         // console.log(JSON.stringify(workerData))
         // console.log(lat,lon)
-        const res = await FindNearByWorkers({latitude:Number(lat),longitude:Number(lon)},workerData)
+        const isListCategory = await CustomerQueryRepository().isBlockCategory()
+        console.log(isListCategory)
+        const res = await FindNearByWorkers({latitude:Number(lat),longitude:Number(lon)},workerData,isListCategory)
         return res
     } catch (error) {
         console.log(`Error from useCases->utils-> getCategoryNameUtil \n${error}`)

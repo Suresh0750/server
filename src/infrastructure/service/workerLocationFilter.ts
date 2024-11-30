@@ -7,7 +7,7 @@ type Coordinates = {
 
 // * Find nearby workers using the Haversine formula
 // const FindNearByWorkers = (coords: CoordsTypes, workerData: workerDetailsWithlatlon[]) => {
-    export const FindNearByWorkers = (coords: Coordinates, workerData: any) => {       
+    export const FindNearByWorkers = (coords: Coordinates, workerData: any,isListCategory:string[]) => {       
         // * Haversine distance calculation
         function haversineDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
             const toRadians = (degree: number) => (degree * Math.PI) / 180;
@@ -47,6 +47,10 @@ type Coordinates = {
         });
     
         // console.log('Nearby Workers:', nearbyWorkers); 
+        console.log('isListCategory')
+        console.log(isListCategory)
+        console.log('nearbyWorkers')
+        console.log(nearbyWorkers)
         return nearbyWorkers;
     }
     

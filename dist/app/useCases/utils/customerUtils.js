@@ -116,7 +116,9 @@ const getVerifiedWorkerUtils = (lat, lon) => __awaiter(void 0, void 0, void 0, f
         // console.log('all worker')
         // console.log(JSON.stringify(workerData))
         // console.log(lat,lon)
-        const res = yield (0, workerLocationFilter_1.FindNearByWorkers)({ latitude: Number(lat), longitude: Number(lon) }, workerData);
+        const isListCategory = yield (0, customer_1.CustomerQueryRepository)().isBlockCategory();
+        console.log(isListCategory);
+        const res = yield (0, workerLocationFilter_1.FindNearByWorkers)({ latitude: Number(lat), longitude: Number(lon) }, workerData, isListCategory);
         return res;
     }
     catch (error) {
