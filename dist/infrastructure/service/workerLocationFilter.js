@@ -29,10 +29,11 @@ const FindNearByWorkers = (coords, workerData, isListCategory) => {
         return distance <= maxDistance; // Only include workers within 25km
     });
     // console.log('Nearby Workers:', nearbyWorkers); 
-    console.log('isListCategory');
-    console.log(isListCategory);
-    console.log('nearbyWorkers');
-    console.log(nearbyWorkers);
-    return nearbyWorkers;
+    let fileterWorker = nearbyWorkers.filter((data) => {
+        if (!isListCategory.includes(data === null || data === void 0 ? void 0 : data.category)) {
+            return data;
+        }
+    });
+    return fileterWorker;
 };
 exports.FindNearByWorkers = FindNearByWorkers;

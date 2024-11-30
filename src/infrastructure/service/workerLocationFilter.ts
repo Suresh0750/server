@@ -47,10 +47,12 @@ type Coordinates = {
         });
     
         // console.log('Nearby Workers:', nearbyWorkers); 
-        console.log('isListCategory')
-        console.log(isListCategory)
-        console.log('nearbyWorkers')
-        console.log(nearbyWorkers)
-        return nearbyWorkers;
+
+        let fileterWorker = nearbyWorkers.filter((data:any)=>{
+            if(!isListCategory.includes(data?.category)){
+                return data
+            }
+       })
+        return fileterWorker;
     }
     
