@@ -170,7 +170,8 @@ function clearToken(role: string, res: Response) {
                 res.clearCookie(CookieTypes.UserRefreshToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'none',
+                    sameSite: 'strict',
+                    domain: ".profinders.online",
                     path: '/',
                 });
                 res.clearCookie(CookieTypes.UserAccessToken);
@@ -179,7 +180,8 @@ function clearToken(role: string, res: Response) {
                 res.clearCookie(CookieTypes.WorkerRefreshToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'none',
+                    sameSite: 'strict',
+                    domain: ".profinders.online",
                     path: '/',
                 });
                 res.clearCookie(CookieTypes.WorkerAccessToken);

@@ -387,13 +387,15 @@ export const CustomerLogoutController = async (req:Request,res:Response,next:Nex
         res.clearCookie(CookieTypes.WorkerRefreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
+            sameSite: 'strict',
+            domain: ".profinders.online",
             path : '/'
         });
         res.clearCookie(CookieTypes.UserRefreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
+            sameSite: 'strict',
+            domain: ".profinders.online",
             path : '/'
         });
         res.clearCookie(CookieTypes.WorkerAccessToken);

@@ -312,7 +312,8 @@ const adminLogoutController = (req, res, next) => __awaiter(void 0, void 0, void
         res.clearCookie(commonTypes_2.CookieTypes.AdminRefreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict'
+            sameSite: 'strict',
+            domain: ".profinders.online",
         });
         req.session.destroy((err) => {
             if (err) {

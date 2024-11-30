@@ -328,7 +328,8 @@ export const adminLogoutController = async(req:Request,res:Response,next:NextFun
         res.clearCookie(CookieTypes.AdminRefreshToken, {  // * Clear the refresh token cookie
             httpOnly: true,
             secure: true, 
-            sameSite: 'strict'
+            sameSite: 'strict',
+            domain: ".profinders.online",
         });
         req.session.destroy((err)=>{
             if(err){

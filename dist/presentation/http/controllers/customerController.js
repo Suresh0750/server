@@ -361,13 +361,15 @@ const CustomerLogoutController = (req, res, next) => __awaiter(void 0, void 0, v
         res.clearCookie(commonTypes_1.CookieTypes.WorkerRefreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
+            sameSite: 'strict',
+            domain: ".profinders.online",
             path: '/'
         });
         res.clearCookie(commonTypes_1.CookieTypes.UserRefreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
+            sameSite: 'strict',
+            domain: ".profinders.online",
             path: '/'
         });
         res.clearCookie(commonTypes_1.CookieTypes.WorkerAccessToken);
