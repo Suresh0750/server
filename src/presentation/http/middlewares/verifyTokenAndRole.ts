@@ -82,8 +82,10 @@ export const verifyTokenAndRole = (role: string[]) => {
 
             
             if (payload && (payload?.role == Role.User || payload?.role == Role.Worker)) {
+                console.log('check block')
                 const isBlock = await checkBlocked(payload?.role, payload?.customerId);
-                
+                console.log("isBlock")
+                console.log(isBlock)
                 if (isBlock) {
                     console.log('user is block')
                     await clearToken(payload.role,res)

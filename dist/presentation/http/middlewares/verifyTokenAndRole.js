@@ -91,7 +91,10 @@ const verifyTokenAndRole = (role) => {
                 return res.status(commonTypes_1.StatusCode.Unauthorized).json({ success: false, message: 'Unauthorized, please log in', middleware: true });
             }
             if (payload && ((payload === null || payload === void 0 ? void 0 : payload.role) == commonTypes_1.Role.User || (payload === null || payload === void 0 ? void 0 : payload.role) == commonTypes_1.Role.Worker)) {
+                console.log('check block');
                 const isBlock = yield (0, checkBlocked_1.checkBlocked)(payload === null || payload === void 0 ? void 0 : payload.role, payload === null || payload === void 0 ? void 0 : payload.customerId);
+                console.log("isBlock");
+                console.log(isBlock);
                 if (isBlock) {
                     console.log('user is block');
                     yield clearToken(payload.role, res);
