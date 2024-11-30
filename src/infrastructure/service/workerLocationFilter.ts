@@ -47,9 +47,10 @@ type Coordinates = {
         });
     
         // console.log('Nearby Workers:', nearbyWorkers); 
+        isListCategory = isListCategory?.map((data)=> data?.toLowerCase())
 
         let fileterWorker = nearbyWorkers.filter((data:any)=>{
-            if(!isListCategory.includes(data?.category)){
+            if(!isListCategory.includes((data?.category)?.toLowerCase())){
                 return data
             }
        })

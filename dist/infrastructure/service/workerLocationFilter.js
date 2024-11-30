@@ -29,8 +29,10 @@ const FindNearByWorkers = (coords, workerData, isListCategory) => {
         return distance <= maxDistance; // Only include workers within 25km
     });
     // console.log('Nearby Workers:', nearbyWorkers); 
+    isListCategory = isListCategory === null || isListCategory === void 0 ? void 0 : isListCategory.map((data) => data === null || data === void 0 ? void 0 : data.toLowerCase());
     let fileterWorker = nearbyWorkers.filter((data) => {
-        if (!isListCategory.includes(data === null || data === void 0 ? void 0 : data.category)) {
+        var _a;
+        if (!isListCategory.includes((_a = (data === null || data === void 0 ? void 0 : data.category)) === null || _a === void 0 ? void 0 : _a.toLowerCase())) {
             return data;
         }
     });
