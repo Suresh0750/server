@@ -49,11 +49,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// const allowedOrigins = [
-//   "https://e-vent-project-ii.vercel.app",
-//   "https://www.eventopia.shop",
-//   "https://eventopia.shop", 'http://localhost:3000', '*'
-// ];
 
 const allowedOrigins = [
   "https://www.profinders.online",

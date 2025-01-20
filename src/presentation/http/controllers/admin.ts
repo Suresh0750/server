@@ -307,7 +307,7 @@ export const AdminVerify = async (req:Request,res:Response,next:NextFunction)=>{
                 secure :true,
                 sameSite:'strict',
                 domain: ".profinders.online",
-                maxAge: 15 * 60 * 1000
+                    
             })    
          return  res.status(StatusCode.Success).json({success:true,message:'login verify successful'})
         }    

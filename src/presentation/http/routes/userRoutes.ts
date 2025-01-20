@@ -23,7 +23,7 @@ import {verifyTokenAndRole} from '../middlewares/verifyTokenAndRole'
 const userRouter = Router()
 
 
-
+// * Role based authendication
 
 // * authendication 
 userRouter.post('/userSignup',validateUserSignUp,userSignupController)
