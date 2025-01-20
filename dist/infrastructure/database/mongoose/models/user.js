@@ -26,11 +26,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const userSchema = new mongoose_1.Schema({
-    username: { type: String, required: true, trim: true },
-    phoneNumber: { type: Number, required: true },
-    emailAddress: { type: String, required: true, unique: true },
-    address: { type: String, required: true },
-    password: { type: String, required: true },
+    username: { type: String, trim: true },
+    phoneNumber: { type: Number },
+    emailAddress: { type: String, unique: true },
+    address: { type: String },
+    password: { type: String },
     isVerified: { type: Boolean, default: false },
     isBlocked: { type: Boolean, default: false }, // Changed from `isBlock` to `isBlocked`
     profile: { type: String },

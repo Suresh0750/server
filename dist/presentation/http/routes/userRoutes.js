@@ -10,6 +10,7 @@ const user_1 = require("../controllers/user");
 // * authendication middleware 
 const verifyTokenAndRole_1 = require("../middlewares/verifyTokenAndRole");
 const userRouter = (0, express_1.Router)();
+// * Role based authendication
 // * authendication 
 userRouter.post('/userSignup', validationMiddleware_1.validateUserSignUp, user_1.userSignupController);
 userRouter.post('/loginverify', validationMiddleware_1.isEmailValidate, user_1.LoginUser);

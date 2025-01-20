@@ -294,7 +294,6 @@ const AdminVerify = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
                 secure: true,
                 sameSite: 'strict',
                 domain: ".profinders.online",
-                maxAge: 15 * 60 * 1000
             });
             return res.status(commonTypes_1.StatusCode.Success).json({ success: true, message: 'login verify successful' });
         }
